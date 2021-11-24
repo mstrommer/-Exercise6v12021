@@ -22,12 +22,12 @@ class AppTest {
 
     @BeforeAll
     public static void init() {
-        System.out.println("Testing Exercise 5");
+        System.out.println("Testing Exercise 6");
     }
 
     @AfterAll
     public static void finish() {
-        System.out.println("Finished Testing Exercise 5");
+        System.out.println("Finished Testing Exercise 6");
     }
 
     @BeforeEach
@@ -190,12 +190,12 @@ class AppTest {
         try {
             Method m = Person.class.getMethod("replaceVowelsInNote");
             Constructor<?> co = Person.class.getConstructor(String.class, String.class, String.class, int.class, String.class);
-            Person p1 = (Person) co.newInstance("Obi-Wan", "Kenobi", "+4367636723", 99, "Master");
+            Person p1 = (Person) co.newInstance("Obi-Wan", "Kenobi", "+4367636723", 99, "Master within Jedi Order");
             Field note = Person.class.getDeclaredField("note");
             note.setAccessible(true);
             m.invoke(p1);
-            assertEquals("M*st*r", ((String) note.get(p1)));
-            assertNotEquals("Master", ((String) note.get(p1)));
+            assertEquals("M*st*r w*th*n J*d* *rd*r", ((String) note.get(p1)));
+            assertNotEquals("Master within Jedi Order", ((String) note.get(p1)));
         } catch (NoSuchMethodException nsme){
             nsme.printStackTrace();
             fail("There should be a method called replaceVowelsInNote.");
